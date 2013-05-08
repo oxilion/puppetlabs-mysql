@@ -31,6 +31,8 @@ query_cache_size   = 16M
 <% if log_error != 'syslog' -%>
 log_error          = <%= log_error %>
 <% end -%>
+slow_query_log      = <%= slow_query_log %>
+slow_query_log_file = <%= slow_query_log_file %>
 expire_logs_days   = 10
 max_binlog_size    = 100M
 <% if default_engine != 'UNSET' %>

@@ -63,6 +63,10 @@
 #
 # [*service_name*]          - The name of the service to start
 #
+# [*slow_query_log*]        - Whether to log slow queries (0 or 1)
+#
+# [*slow_query_log_file*]   - Path to mysql slow query log
+#
 # [*socket*]                - The location of the MySQL server socket file
 #
 # [*ssl*]                   - Whether or not to enable ssl
@@ -106,6 +110,8 @@ class mysql(
   $service_name          = $mysql::params::service_name,
   $service_provider      = $mysql::params::service_provider,
   $socket                = $mysql::params::socket,
+  $slow_query_log        = $mysql::params::slow_query_log,
+  $slow_query_log_file   = $mysql::params::slow_query_log_file,
   $ssl                   = $mysql::params::ssl,
   $ssl_ca                = $mysql::params::ssl_ca,
   $ssl_cert              = $mysql::params::ssl_cert,

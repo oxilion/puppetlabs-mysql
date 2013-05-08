@@ -51,6 +51,8 @@ class mysql::params {
       $ruby_package_provider = 'gem'
       $service_name          = 'mysqld'
       $server_package_name   = 'mysql-server'
+      $slow_query_log        = '0'
+      $slow_query_log_file   = '/var/log/mysqld-slow-query.log'
       $socket                = '/var/lib/mysql/mysql.sock'
       $ssl_ca                = '/etc/mysql/cacert.pem'
       $ssl_cert              = '/etc/mysql/server-cert.pem'
@@ -87,6 +89,11 @@ class mysql::params {
       $python_package_name   = 'python-mysql'
       $java_package_name     = 'mysql-connector-java'
       $root_group            = 'root'
+      $slow_query_log        = '0'
+      $slow_query_log_file   = $::operatingsystem ? {
+        /OpenSuSE/           => '/var/log/mysql/slow-query.log',
+        /(SLES|SLED)/        => '/var/log/mysqld-slow-query.log',
+        }
       $ssl_ca                = '/etc/mysql/cacert.pem'
       $ssl_cert              = '/etc/mysql/server-cert.pem'
       $ssl_key               = '/etc/mysql/server-key.pem'
@@ -108,6 +115,8 @@ class mysql::params {
       $php_package_name     = 'php5-mysql'
       $java_package_name    = 'libmysql-java'
       $root_group           = 'root'
+      $slow_query_log       = '0'
+      $slow_query_log_file  = '/var/log/mysqld/slow-query.log'
       $ssl_ca               = '/etc/mysql/cacert.pem'
       $ssl_cert             = '/etc/mysql/server-cert.pem'
       $ssl_key              = '/etc/mysql/server-key.pem'
@@ -130,6 +139,8 @@ class mysql::params {
       $php_package_name      = 'php5-mysql'
       $java_package_name     = 'databases/mysql-connector-java'
       $root_group            = 'wheel'
+      $slow_query_log        = '0'
+      $slow_query_log_file   = "/var/db/mysql/${::hostname}-slow-query.log"
       $ssl_ca                = undef
       $ssl_cert              = undef
       $ssl_key               = undef
@@ -153,6 +164,8 @@ class mysql::params {
           $php_package_name      = 'php-mysql'
           $java_package_name     = 'mysql-connector-java'
           $root_group            = 'root'
+          $slow_query_log        = '0'
+          $slow_query_log_file   = '/var/log/mysqld-slow-query.log'
           $ssl_ca                = '/etc/mysql/cacert.pem'
           $ssl_cert              = '/etc/mysql/server-cert.pem'
           $ssl_key               = '/etc/mysql/server-key.pem'
